@@ -49,3 +49,17 @@ app.get("/test", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+//get test result for results page
+app.get("/result", async (req, res) => {
+  let id = 0;
+  try {
+    //UNSURE either get answers and evaluate, or do evaluation on submission into own table or columns
+    //filling in for first option atm
+    const result = await db.any("SELECT * from results WHERE id=${id}", id);
+  } catch (err) {
+    console.error(err.message);
+  }
+
+  //use result, evaluate personality type
+});
