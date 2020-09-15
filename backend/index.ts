@@ -36,6 +36,16 @@ app.post("/test", async (req, res) => {
   }
 });
 
+// Get questions from database
+app.get("/test", async (req, res) => {
+  try {
+    const questions = await db.any("SELECT * FROM questions");
+    res.json(questions);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
