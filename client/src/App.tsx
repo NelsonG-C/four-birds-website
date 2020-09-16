@@ -3,11 +3,14 @@ import logo from "./logo.svg";
 import { Layout } from "./layout/layout";
 import "./App.css";
 
+//PAGES
+import HomePage from "./pages/home";
+
 function App() {
   return (
     <div className="App">
       <Layout className="App-header">
-        <div>Hello</div>
+        <HomePage />
       </Layout>
     </div>
   );
