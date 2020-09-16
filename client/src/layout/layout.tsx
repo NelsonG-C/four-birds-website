@@ -30,7 +30,7 @@ export const Layout = (props: any) => {
         </Navbar>
       </header>
       <body>
-        <Container>{props.children}</Container>
+        <div>{props.children}</div>
       </body>
       <footer>
         <Container>
