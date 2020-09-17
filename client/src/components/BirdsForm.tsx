@@ -35,6 +35,13 @@ export const BirdsForm = (questionData: any) => {
     QuestionData();
   }, []);
 
+  async function onSubmit() {
+    console.log("The submission link works");
+  }
+
+  //calculating which part of q array to use
+  const index = step * 4;
+
   //where I'm storing the answers
   const props = { formData, setForm, step, setStep, questions };
   //insert logic for which questions are passed
@@ -57,11 +64,11 @@ export const BirdsForm = (questionData: any) => {
   } else {
     return (
       <div>
-        <FormItem {...props} />
-        <FormItem {...props} />
-        <FormItem {...props} />
-        <FormItem {...props} />
-        <FormButton />
+        <FormItem {...props} i={index} />
+        <FormItem {...props} i={index + 1} />
+        <FormItem {...props} i={index + 2} />
+        <FormItem {...props} i={index + 3} />
+        <FormButton step={step} setStep={setStep} onSubmit={onSubmit} />
       </div>
     );
   }
