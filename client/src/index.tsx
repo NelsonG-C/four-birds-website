@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+//Note: double render caused by Strictmode - part of dev mode
 ReactDOM.render(
   <React.StrictMode>
     <App />
