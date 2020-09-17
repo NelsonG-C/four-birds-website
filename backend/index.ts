@@ -11,6 +11,9 @@ app.use(express.json());
 
 // ROUTES
 
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
 //Submit Test
 app.post("/test", async (req, res) => {
   // need to handle multiple answer inserts
@@ -44,10 +47,6 @@ app.get("/test", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
-});
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
 });
 
 //get test result for results page
