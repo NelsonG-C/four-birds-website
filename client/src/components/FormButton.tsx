@@ -1,17 +1,14 @@
 import React, { Fragment } from "react";
 import { Button } from "react-bootstrap";
 
-export const FormButton = () => {
+export const FormButton = ({ step, setStep, onSubmit }: any) => {
   //to be handled
-  let id;
   let submit;
-  let next;
-
   let button;
-  if (id === "submit") {
-    button = <Button onClick={submit}>Submit</Button>;
+  if (step === 3) {
+    button = <Button onClick={() => onSubmit()}>Submit</Button>;
   } else {
-    button = <Button onClick={next}>Next</Button>;
+    button = <Button onClick={() => setStep(step + 1)}>Next</Button>;
   }
   return <Fragment>{button}</Fragment>;
 };
