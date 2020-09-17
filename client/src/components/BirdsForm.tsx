@@ -5,6 +5,8 @@ import { FormButton } from "./FormButton";
 //setting default data structure
 const defaultData = {};
 
+const questionData = {};
+
 //question data coming in
 export const BirdsForm = (questionData: any) => {
   //where I'm storing the answers

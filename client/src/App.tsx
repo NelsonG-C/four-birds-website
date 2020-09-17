@@ -5,12 +5,13 @@ import "./App.css";
 
 //PAGES
 import HomePage from "./pages/home";
+import { TestPage } from "./pages/test";
 
 function App() {
   return (
     <div className="App">
       <Layout className="App-header">
-        <HomePage />
+        <TestPage />
       </Layout>
     </div>
   );

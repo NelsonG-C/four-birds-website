@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Layout } from "../layout/layout";
 import { BirdsForm } from "../components/BirdsForm";
 
-const TestPage = () => {
+export const TestPage = () => {
   return (
     <Fragment>
       <Layout>
