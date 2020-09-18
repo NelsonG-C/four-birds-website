@@ -6,7 +6,7 @@ export const FormButton = ({ step, setStep, onSubmit }: any) => {
   let submit;
   let button;
   if (step === 3) {
-    button = <Button onClick={() => onSubmit()}>Submit</Button>;
+    button = <Button onClick={(e) => onSubmit(e)}>Submit</Button>;
   } else {
     button = <Button onClick={() => setStep(step + 1)}>Next</Button>;
   }

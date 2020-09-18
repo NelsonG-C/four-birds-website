@@ -48,7 +48,6 @@ export const BirdsForm = (questionData: any) => {
   function onChange(e: any) {
     const answer = e.target.value;
     const id = e.target.id;
-    console.log(formData[id]["answer"]);
 
     const answerIndex = formData.map((item: any) => {
       console.log(item.id);
@@ -61,9 +60,24 @@ export const BirdsForm = (questionData: any) => {
     setForm(answerIndex);
   }
 
-  async function onSubmit() {
+  const onSubmit = async (e: any) => {
     console.log("The submission link works");
-  }
+    try {
+      const body = [...formData];
+      console.log(body);
+      const jsons = JSON.stringify(body);
+      console.log(jsons);
+      const response = await fetch("http://localhost:5000/test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      console.log("Done here");
+      console.log(response);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   //calculating which part of q array to use
   const index = step * 4;
@@ -79,9 +93,9 @@ export const BirdsForm = (questionData: any) => {
     return (
       <div>
         <FormItem {...props} i={index} onChange={onChange} />
-        <FormItem {...props} i={index + 1} />
-        <FormItem {...props} i={index + 2} />
-        <FormItem {...props} i={index + 3} />
+        <FormItem {...props} i={index + 1} onChange={onChange} />
+        <FormItem {...props} i={index + 2} onChange={onChange} />
+        <FormItem {...props} i={index + 3} onChange={onChange} />
         <FormButton step={step} setStep={setStep} onSubmit={onSubmit} />
       </div>
     );

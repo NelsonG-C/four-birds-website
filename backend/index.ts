@@ -27,8 +27,9 @@ app.post("/test", async (req, res) => {
       table: "results",
     });
     const answers = req.body;
-
+    console.log("here too");
     //creating SQL query
+    // need to match question_id heading
     const query = pgp.helpers.insert(answers, cs) + "RETURNING id";
 
     const result = await db.many(query);
