@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FormItem } from "./FormItem";
 import { FormButton } from "./FormButton";
 
-//setting default data structure
-const defaultData = {};
-
 const questionData = {};
 
 //fetch question data function
@@ -13,9 +10,8 @@ const questionData = {};
 export const BirdsForm = (questionData: any) => {
   //have a place to store questions
   const [questions, setQuestions] = useState([]);
-  const [formData, setForm] = useState(defaultData);
+  const [formData, setForm] = useState<any>([]);
   const [step, setStep] = useState(0);
-  //need to add step logic here
 
   const QuestionData = async () => {
     try {
@@ -23,8 +19,22 @@ export const BirdsForm = (questionData: any) => {
         method: "GET",
       });
       const data = await response.json();
+      const answers: any = [];
+
+      //setting default formData - dynamic
+      data.forEach((e: any) => {
+        console.log("e", e.id);
+        let entry = {
+          id: e.id,
+          q_type: e.q_type,
+          answer: "",
+        };
+        answers.push(entry);
+      });
+      setForm(answers);
+      console.log(data);
+      console.log("About to set questions");
       setQuestions(data);
-      console.log("Setting questions");
     } catch (error) {
       console.error(error.message);
     }
@@ -35,6 +45,22 @@ export const BirdsForm = (questionData: any) => {
     QuestionData();
   }, []);
 
+  function onChange(e: any) {
+    const answer = e.target.value;
+    const id = e.target.id;
+    console.log(formData[id]["answer"]);
+
+    const answerIndex = formData.map((item: any) => {
+      console.log(item.id);
+      if (item.id == id) {
+        return { ...item, answer: e.target.value };
+      }
+      return item;
+    });
+
+    setForm(answerIndex);
+  }
+
   async function onSubmit() {
     console.log("The submission link works");
   }
@@ -42,29 +68,17 @@ export const BirdsForm = (questionData: any) => {
   //calculating which part of q array to use
   const index = step * 4;
 
-  //where I'm storing the answers
-  const props = { formData, setForm, step, setStep, questions };
-  //insert logic for which questions are passed
-  //step update
-  //function updates index for questions
-  //formitem uses index to display correct question from questionData
+  //important props for each formItem
+  const props = { formData, setForm, questions };
+  console.log("Form Data", formData);
 
-  //Have four item elements on each page
-  //form button displays either next button or submit
-  //interaction with button changes step.
-  //step update changes question values
-  //this causes re-render of questions and update
-
-  //need to set onChange={setform} and pass as prop into each
-  console.log("Here");
-  console.log(questions);
   if (questions.length == 0) {
     console.log("In here");
     return <div></div>;
   } else {
     return (
       <div>
-        <FormItem {...props} i={index} />
+        <FormItem {...props} i={index} onChange={onChange} />
         <FormItem {...props} i={index + 1} />
         <FormItem {...props} i={index + 2} />
         <FormItem {...props} i={index + 3} />
