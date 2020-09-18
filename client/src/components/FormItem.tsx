@@ -33,9 +33,27 @@ export const FormItem = ({
         checked={formData[i]["answer"] === "2"}
         onChange={(e) => onChange(e)}
       />
-      <input type="radio" id="" value="3" />
-      <input type="radio" id="" value="4" />
-      <input type="radio" id="" value="5" />
+      <input
+        type="radio"
+        id={formData[i].id}
+        value="3"
+        checked={formData[i]["answer"] === "3"}
+        onChange={(e) => onChange(e)}
+      />
+      <input
+        type="radio"
+        id={formData[i].id}
+        value="4"
+        checked={formData[i]["answer"] === "4"}
+        onChange={(e) => onChange(e)}
+      />
+      <input
+        type="radio"
+        id={formData[i].id}
+        value="5"
+        checked={formData[i]["answer"] === "5"}
+        onChange={(e) => onChange(e)}
+      />
       <p>Disagree</p>
     </div>
   );
