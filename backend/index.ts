@@ -65,4 +65,21 @@ app.get("/result", async (req, res) => {
   //use result, evaluate personality type
 });
 
-export const evaluateTest = async (data: any) => {};
+export const evaluateTest = async (data: any) => {
+  const types = ["D", "I", "S", "C"];
+  const totals: Number[] = [];
+
+  types.forEach((i) => {
+    let total = 0;
+    for (let j = 0; j < data.length(); j++) {
+      if (i == data[j]["q_type"]) {
+        total = total + data[j]["answer"];
+      }
+    }
+    totals.push(total);
+    console.log(totals);
+  });
+  //to count answers for each type
+  //compare totals
+  //
+};
