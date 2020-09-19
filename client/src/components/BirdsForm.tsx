@@ -25,7 +25,7 @@ export const BirdsForm = (questionData: any) => {
       data.forEach((e: any) => {
         console.log("e", e.id);
         let entry = {
-          id: e.id,
+          question_id: e.id,
           q_type: e.q_type,
           answer: "",
         };
@@ -51,8 +51,9 @@ export const BirdsForm = (questionData: any) => {
 
     const answerIndex = formData.map((item: any) => {
       console.log(item.id);
-      if (item.id == id) {
-        return { ...item, answer: e.target.value };
+      if (item.question_id == id) {
+        const number = Number(e.target.value);
+        return { ...item, answer: number };
       }
       return item;
     });

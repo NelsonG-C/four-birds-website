@@ -24,18 +24,19 @@ app.post("/test", async (req, res) => {
 
     //setting column headers
     const cs = new pgp.helpers.ColumnSet(["question_id", "answer"], {
-      table: "results",
+      table: "answers",
     });
-    const answers = req.body;
-    console.log("here too");
+    const answerData = req.body;
     //creating SQL query
     // need to match question_id heading
-    const query = pgp.helpers.insert(answers, cs) + "RETURNING id";
-
+    const query = pgp.helpers.insert(answerData, cs) + "RETURNING id";
     const result = await db.many(query);
-
     res.json(result);
+
+    //Evaluate test result
+    evaluateTest(answerData);
   } catch (err) {
+    console.log("This is where I am now");
     console.error(err.message);
   }
 });
@@ -63,3 +64,5 @@ app.get("/result", async (req, res) => {
 
   //use result, evaluate personality type
 });
+
+export const evaluateTest = async (data: any) => {};
