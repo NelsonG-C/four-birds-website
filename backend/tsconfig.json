@@ -12,5 +12,6 @@
       "*": ["node_modules/*"]
     }
   },
-  "include": ["*"]
+  "types": ["node", "jest"],
+  "include": ["*", "/*", "tests/evaluate.test.ts"]
 }
