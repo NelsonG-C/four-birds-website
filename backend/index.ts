@@ -4,6 +4,7 @@ import { db, pgp } from "./db";
 
 const app = express();
 const port = 5000;
+const uuid = "b4f8113c-b087-4660-9b96-e2eefba175d2";
 
 //need to check understanding of this bit
 app.use(cors());
@@ -34,9 +35,14 @@ app.post("/test", async (req, res) => {
     res.json(result);
 
     //Evaluate test result
-    // evaluateTest(answerData);
+    const topResult = await evaluateTest(answerData);
 
-    //insert result into results db;
+    //insert result into users db;
+    const resultQuery = await db.any(
+      "INSERT INTO users (user_id, top_result) VALUES ($1, $2)",
+      [uuid, topResult[0]]
+    );
+    console.log("Got here now");
   } catch (err) {
     console.log("This is where I am now");
     console.error(err.message);
@@ -66,3 +72,40 @@ app.get("/result", async (req, res) => {
 
   //use result, evaluate personality type
 });
+
+export const evaluateTest = async (data: any) => {
+  const types = ["D", "I", "S", "C"];
+  const totals: number[] = [];
+
+  //Get type total counts
+
+  await types.forEach((i) => {
+    let total = 0;
+    for (let j = 0; j < data.length; j++) {
+      if (i == data[j]["q_type"]) {
+        total = total + data[j]["answer"];
+      }
+    }
+    totals.push(total);
+    console.log(totals);
+  });
+  console.log(totals);
+
+  //determine max value
+  /* var maxIndex = 0;
+  for (var i = 0; i < totals.length ; i++) {
+    if (totals[i] >)
+  }
+  */
+
+  const max = totals.reduce((m, n) => Math.max(m, n));
+  const indexes = [...totals.keys()].filter((i) => totals[i] === max);
+  console.log(indexes);
+  //cop out way of deciding atm
+  const answer = types[indexes[0]];
+
+  return answer;
+  //to count answers for each type
+  //compare totals
+  //
+};
