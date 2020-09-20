@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Container } from "react-bootstrap";
 
-const AboutPage = () => {
+export const AboutPage = () => {
   return (
     <Fragment>
       <Container>

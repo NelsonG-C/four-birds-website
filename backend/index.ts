@@ -61,11 +61,15 @@ app.get("/test", async (req, res) => {
 
 //get test result for results page
 app.get("/result", async (req, res) => {
-  let id = 0;
+  //filler val righht now without session
+  let id = uuid;
   try {
     //UNSURE either get answers and evaluate, or do evaluation on submission into own table or columns
     //filling in for first option atm
-    const result = await db.any("SELECT * from results WHERE id=${id}", id);
+    const result = await db.any(
+      "SELECT * from results WHERE user_id=${id}",
+      id
+    );
   } catch (err) {
     console.error(err.message);
   }

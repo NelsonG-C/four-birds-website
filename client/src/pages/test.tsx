@@ -5,10 +5,8 @@ import { BirdsForm } from "../components/BirdsForm";
 export const TestPage = () => {
   return (
     <Fragment>
-      <Layout>
-        <h2>Four Birds Test</h2>
-        <BirdsForm />
-      </Layout>
+      <h2>Four Birds Test</h2>
+      <BirdsForm />
     </Fragment>
   );
 };
