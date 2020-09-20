@@ -15,7 +15,8 @@ CREATE TABLE Questions(
 );
 
 CREATE TABLE Users(
-    username VARCHAR(255) PRIMARY KEY,
+    username TEXT,
     password TEXT,
-    user_id uuid REFERENCES Results(id)
+    user_id PRIMARY KEY,
+    top_result CHAR
 );
