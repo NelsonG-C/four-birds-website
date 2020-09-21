@@ -66,10 +66,11 @@ app.get("/result", async (req, res) => {
   try {
     //UNSURE either get answers and evaluate, or do evaluation on submission into own table or columns
     //filling in for first option atm
-    const result = await db.any(
-      "SELECT * from results WHERE user_id=${id}",
-      id
-    );
+    const result = await db.any("SELECT * from users WHERE user_id= ($1)", [
+      id,
+    ]);
+    console.log(result);
+    res.json(result);
   } catch (err) {
     console.error(err.message);
   }
