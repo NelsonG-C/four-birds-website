@@ -35,6 +35,21 @@ export const AboutPage = () => {
         <p>This test uses open source test data provided by</p>
         <p>Here is the link</p>
       </Container>
+      <Container>
+        <h3>How was this test developed?</h3>
+        <p>This test uses the open source psychometrics question data from</p>
+        <p>https://openpsychometrics.org/tests/ODAT/</p>
+      </Container>
+      <Container>
+        <h3>Other Tests</h3>
+        <p>Looking for more personality tests?</p>
+        <p>
+          Try the OCEAN test, which is the most scientifically sound personality
+          test available
+        </p>
+        <p>Follow the link below</p>
+        <p>https://openpsychometrics.org/tests/IPIP-BFFM/</p>
+      </Container>
     </Fragment>
   );
 };
