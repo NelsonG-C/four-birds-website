@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logo from "../logo.svg";
+import { Switch, Route, Link } from "react-router-dom";
 
 export const Layout = (props: any) => {
   return (
@@ -20,11 +21,11 @@ export const Layout = (props: any) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="">About</Nav.Link>
-              <Nav.Link href="">The Birds</Nav.Link>
-              <Nav.Link href="">Data</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
+              <Nav.Link href="/birds">The Birds</Nav.Link>
+              <Nav.Link href="/data">Data</Nav.Link>
               <Nav.Link href="">Login</Nav.Link>
-              <Nav.Link href="">Take The Test</Nav.Link>
+              <Nav.Link href="/test">Take The Test</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
