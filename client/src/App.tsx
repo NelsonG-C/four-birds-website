@@ -14,10 +14,6 @@ function App() {
   return (
     <div className="App">
       <Layout className="App-header">
-        <HomePage />
-        <AboutPage />
-        <TestPage />
-        <BirdsPage />
         <ResultsPage />
       </Layout>
     </div>
