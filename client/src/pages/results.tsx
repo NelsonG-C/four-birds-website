@@ -1,31 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import { Row, Container } from "react-bootstrap";
-import eagle from "../logo.svg";
-import owl from "../logo.svg";
-import peacock from "../logo.svg";
-import dove from "../logo.svg";
-
-const Birds: any = [
-  {
-    D: {
-      name: "Eagle",
-      image: eagle,
-    },
-    I: {
-      name: "Peacock",
-      image: peacock,
-    },
-    S: {
-      name: "Dove",
-      image: dove,
-    },
-    C: {
-      name: "Owl",
-      image: owl,
-    },
-  },
-];
+import Birds from "../layout/birddata";
 
 export const ResultsPage = () => {
   const [results, setResult] = useState<any>([]);
@@ -53,7 +29,7 @@ export const ResultsPage = () => {
 
   if (results.length == 0) {
     console.log("In here");
-    return <div></div>;
+    return <div>Meow</div>;
   } else {
     const letter: any = results[0].top_result;
     console.log(letter);

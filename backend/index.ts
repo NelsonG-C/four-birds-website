@@ -7,7 +7,7 @@ import { db, pgp } from "./db";
 
 const app = express();
 const port = 5000;
-const uuid = "b4f8113c-b087-4660-9b96-e2eefba175d2";
+const uuid = "b4f8113c-b087-4660-9b96-e2eefba175d8";
 
 //need to check understanding of this bit
 app.use(cors());
@@ -56,6 +56,8 @@ app.post("/test", async (req, res) => {
       "INSERT INTO users (user_id, top_result) VALUES ($1, $2)",
       [uuid, topResult[0]]
     );
+
+    req.session.topResult = topResult;
     console.log("Got here now");
   } catch (err) {
     console.log("This is where I am now");
@@ -77,9 +79,12 @@ app.get("/test", async (req, res) => {
 
 //get test result for results page
 app.get("/result", async (req, res) => {
+  var result = req.session.topResult;
+  console.log(result);
   //filler val righht now without session
   let id = uuid;
-  try {
+  res.json(result);
+  /* try {
     //UNSURE either get answers and evaluate, or do evaluation on submission into own table or columns
     //filling in for first option atm
     const result = await db.any("SELECT * from users WHERE user_id= ($1)", [
@@ -89,7 +94,7 @@ app.get("/result", async (req, res) => {
     res.json(result);
   } catch (err) {
     console.error(err.message);
-  }
+  }*/
 
   //use result, evaluate personality type
 });

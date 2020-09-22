@@ -26,6 +26,9 @@ function App() {
             <Route path="/test">
               <TestPage />
             </Route>
+            <Route path="/results">
+              <ResultsPage />
+            </Route>
             <Route path="/">
               <HomePage />
             </Route>
