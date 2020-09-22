@@ -1,4 +1,7 @@
 import express from "express";
+import session from "express-session";
+import { v4 as uuidv4 } from "uuid";
+
 const cors = require("cors");
 import { db, pgp } from "./db";
 
@@ -9,6 +12,17 @@ const uuid = "b4f8113c-b087-4660-9b96-e2eefba175d2";
 //need to check understanding of this bit
 app.use(cors());
 app.use(express.json());
+app.use(
+  session({
+    genid: function (req) {
+      return uuidv4(); // use UUIDs for session IDs
+    },
+
+    secret: "value",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // ROUTES
 
@@ -51,6 +65,8 @@ app.post("/test", async (req, res) => {
 
 // Get questions from database
 app.get("/test", async (req, res) => {
+  const sess = req.session;
+  console.log(sess.user_id);
   try {
     const questions = await db.any("SELECT * FROM questions");
     res.json(questions);
@@ -76,6 +92,16 @@ app.get("/result", async (req, res) => {
   }
 
   //use result, evaluate personality type
+});
+
+//using for session stuff - not in use
+app.get("/", async (req, res) => {
+  const sess = req.session;
+  if (!sess.user_id) {
+    sess.user_id = req.sessionID;
+  }
+  console.log(sess);
+  console.log(sess.user_id);
 });
 
 export const evaluateTest = async (data: any) => {
