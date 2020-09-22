@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FormItem } from "./FormItem";
 import { FormButton } from "./FormButton";
+import { useHistory, Redirect } from "react-router-dom";
 
 const questionData = {};
 
@@ -12,6 +13,7 @@ export const BirdsForm = (questionData: any) => {
   const [questions, setQuestions] = useState([]);
   const [formData, setForm] = useState<any>([]);
   const [step, setStep] = useState(0);
+  const [redirect, setRedirect] = useState(false);
 
   const QuestionData = async () => {
     try {
@@ -75,6 +77,7 @@ export const BirdsForm = (questionData: any) => {
       });
       console.log("Done here");
       console.log(response);
+      const redirect = setRedirect(true);
     } catch (error) {
       console.error(error.message);
     }
@@ -87,7 +90,9 @@ export const BirdsForm = (questionData: any) => {
   const props = { formData, setForm, questions };
   console.log("Form Data", formData);
 
-  if (questions.length == 0) {
+  if (redirect == true) {
+    return <Redirect to="/results" />;
+  } else if (questions.length == 0) {
     console.log("In here");
     return <div></div>;
   } else {

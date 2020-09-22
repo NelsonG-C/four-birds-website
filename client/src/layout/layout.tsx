@@ -7,8 +7,8 @@ export const Layout = (props: any) => {
   return (
     <div>
       <header>
-        <Navbar className="bg-light" expand="lg">
-          <Navbar.Brand>
+        <Navbar expand="lg">
+          <Navbar.Brand href="/">
             <img
               src={logo}
               alt=""
