@@ -1,7 +1,7 @@
-import eagle from "../images/eagle.png";
-import owl from "../images/owl.png";
-import peacock from "../images/peacock.png";
-import dove from "../images/dove.png";
+import eagle from "../images/eagle-s.png";
+import owl from "../images/owl-s.png";
+import peacock from "../images/peacock-s.png";
+import dove from "../images/dove-s.png";
 
 const Birds: any = [
   {

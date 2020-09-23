@@ -7,9 +7,10 @@ import { db, pgp } from "./db";
 
 const app = express();
 const port = 5000;
-const uuid = "b4f8113c-b087-4660-9b96-e2eefba175d8";
+const uuid = uuidv4();
 
 //need to check understanding of this bit
+app.set("user_id", uuidv4());
 app.use(cors());
 app.use(express.json());
 app.use(
@@ -54,11 +55,11 @@ app.post("/test", async (req, res) => {
     //insert result into users db;
     const resultQuery = await db.any(
       "INSERT INTO users (user_id, top_result) VALUES ($1, $2)",
-      [uuid, topResult[0]]
+      [req.app.settings.user_id, topResult[0]]
     );
 
     req.session.topResult = topResult;
-    console.log("Got here now");
+    console.log("Got here now", topResult);
   } catch (err) {
     console.log("This is where I am now");
     console.error(err.message);
@@ -67,8 +68,7 @@ app.post("/test", async (req, res) => {
 
 // Get questions from database
 app.get("/test", async (req, res) => {
-  const sess = req.session;
-  console.log(sess.user_id);
+  console.log(req.app);
   try {
     const questions = await db.any("SELECT * FROM questions");
     res.json(questions);
@@ -79,10 +79,12 @@ app.get("/test", async (req, res) => {
 
 //get test result for results page
 app.get("/result", async (req, res) => {
-  var result = req.session.topResult;
-  console.log(result);
+  console.log("Hello in results");
+  const result = await db.one("SELECT * FROM users WHERE user_id=($1)", [
+    req.app.settings.user_id,
+  ]);
+  console.log("result", result);
   //filler val righht now without session
-  let id = uuid;
   res.json(result);
   /* try {
     //UNSURE either get answers and evaluate, or do evaluation on submission into own table or columns
@@ -138,7 +140,11 @@ export const evaluateTest = async (data: any) => {
   const indexes = [...totals.keys()].filter((i) => totals[i] === max);
   console.log(indexes);
   //cop out way of deciding atm
-  const answer = types[indexes[0]];
+
+  //random determination if tie
+  const randomWinner = indexes[Math.floor(Math.random() * indexes.length)];
+  const answer = types[randomWinner];
+  console.log(answer);
 
   return answer;
   //to count answers for each type
