@@ -31,22 +31,22 @@ export const ResultsPage = () => {
     console.log("In here");
     return <div>Meow</div>;
   } else {
-    const letter: any = results[0].top_result;
+    const letter: any = results.top_result;
     console.log(letter);
     const bird: any = Birds[0][letter];
     console.log(bird);
     return (
       <Fragment>
-        <h2>Results Time!</h2>
-        <h3>Your main bird type is...</h3>
-        <Container>
-          <Row>
-            <h3>{bird.name}</h3>
-          </Row>
-          <Row>
-            <img src={bird.image} alt="" />
-          </Row>
-        </Container>
+        <div className="result-heading">
+          <h2>Results Time!</h2>
+          <h3>Your main bird type is...</h3>
+        </div>
+        <Row>
+          <h3 className="results">{bird.name}</h3>
+        </Row>
+        <Row className="results">
+          <img src={bird.image} alt="" />
+        </Row>
       </Fragment>
     );
   }

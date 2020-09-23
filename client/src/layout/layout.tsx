@@ -23,8 +23,6 @@ export const Layout = (props: any) => {
             <Nav className="ml-auto">
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/birds">The Birds</Nav.Link>
-              <Nav.Link href="/data">Data</Nav.Link>
-              <Nav.Link href="">Login</Nav.Link>
               <Nav.Link href="/test">Take The Test</Nav.Link>
             </Nav>
           </Navbar.Collapse>
