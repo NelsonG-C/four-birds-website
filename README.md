@@ -13,9 +13,9 @@ https://openpsychometrics.org/tests/ODAT/
 
 ## Coming Soon!
 
-> Updated Results algorithm
-> Login and session store
-> Data Analysis Page for overall results
+- Updated Results algorithm
+- Login and session store
+- Data Analysis Page for overall results
 
 ## Feedback welcome!
 
