@@ -8,7 +8,7 @@ export const ResultsPage = () => {
 
   const resultData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/result", {
+      const response = await fetch("/result", {
         method: "GET",
       });
       console.log(response.body);

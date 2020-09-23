@@ -45,5 +45,6 @@
     "@types/react-bootstrap": "^0.32.23",
     "@types/react-router-dom": "^5.1.5",
     "@types/uuid": "^8.3.0"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }

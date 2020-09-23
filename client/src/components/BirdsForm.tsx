@@ -15,9 +15,11 @@ export const BirdsForm = (questionData: any) => {
   const [step, setStep] = useState(0);
   const [redirect, setRedirect] = useState(false);
 
+  //proxy
+
   const QuestionData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/test", {
+      const response = await fetch("/test", {
         method: "GET",
       });
       const data = await response.json();
@@ -70,7 +72,7 @@ export const BirdsForm = (questionData: any) => {
       console.log(body);
       const jsons = JSON.stringify(body);
       console.log(jsons);
-      const response = await fetch("http://localhost:5000/test", {
+      const response = await fetch("/test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

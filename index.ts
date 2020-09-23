@@ -1,13 +1,17 @@
 import express from "express";
 import session from "express-session";
 import { v4 as uuidv4 } from "uuid";
+import path from "path";
 
 const cors = require("cors");
 import { db, pgp } from "./db";
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const uuid = uuidv4();
+
+//process.env.PORT
+//process.env.NODE_ENV => production or undefined
 
 //need to check understanding of this bit
 app.set("user_id", uuidv4());
@@ -24,6 +28,11 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+if (process.env.NODE_ENV === "production") {
+  //server static content
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
 
 // ROUTES
 
@@ -109,6 +118,10 @@ app.get("/", async (req, res) => {
   }
   console.log(sess);
   console.log(sess.user_id);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
 export const evaluateTest = async (data: any) => {
