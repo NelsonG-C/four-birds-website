@@ -1,3 +1,7 @@
+:root {
+  --color: #3c9294;
+}
+
 a {
   color: #fff;
 }
@@ -13,6 +17,13 @@ a:hover {
   background-color: #3c9294;
 }
 
+input[type="radio"] {
+  border: 0px;
+  margin-top: 1rem;
+  height: 2rem;
+  width: 3rem;
+}
+
 footer {
   background-color: #3c9294;
   padding: 1.5rem;
@@ -25,13 +36,6 @@ footer p {
 
 .container {
   margin-top: 2rem;
-}
-
-.inline-radio {
-  display: flex;
-  border-radius: 3px;
-  overflow: hidden;
-  border: 1px solid #b6b6b6;
 }
 
 .jumbotron {
@@ -100,4 +104,45 @@ p {
   display: block;
   align-items: center;
   text-align: center;
+}
+
+.test-heading {
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.inline-radio {
+  display: flex;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid #b6b6b6;
+  border-radius: 25px;
+  width: 60%;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.inline-radio p {
+  margin: 1rem;
+}
+
+.question h2 {
+  margin: 1rem 0 1rem 1rem;
+  font-size: 18px;
+}
+
+.test-btn {
+  margin: 1rem 0 1rem 1rem;
+  background-color: #3c9294;
+  border-color: #3c9294;
+}
+
+.form-container {
+  text-align: center;
+}
+
+@media (max-width: 991.98px) {
+  .inline-radio {
+    width: 90% !important;
+  }
 }

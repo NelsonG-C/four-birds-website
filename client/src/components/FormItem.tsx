@@ -16,45 +16,54 @@ export const FormItem = ({
   let val = 2;
   console.log("Formdata in item", formData);
   return (
-    <div className="inline-radio">
+    <div className="question">
       <h2>{questions[i].q_text}</h2>
-      <p>Agree</p>
-      <input
-        type="radio"
-        id={formData[i].question_id}
-        value="1"
-        checked={formData[i]["answer"] === 1}
-        onChange={(e) => onChange(e)}
-      />
-      <input
-        type="radio"
-        id={formData[i].question_id}
-        value="2"
-        checked={formData[i]["answer"] === 2}
-        onChange={(e) => onChange(e)}
-      />
-      <input
-        type="radio"
-        id={formData[i].question_id}
-        value="3"
-        checked={formData[i]["answer"] === 3}
-        onChange={(e) => onChange(e)}
-      />
-      <input
-        type="radio"
-        id={formData[i].question_id}
-        value="4"
-        checked={formData[i]["answer"] === 4}
-        onChange={(e) => onChange(e)}
-      />
-      <input
-        type="radio"
-        id={formData[i].question_id}
-        value="5"
-        checked={formData[i]["answer"] === 5}
-        onChange={(e) => onChange(e)}
-      />
-      <p>Disagree</p>
+      <div className="inline-radio">
+        <p>Disagree</p>
+        <label className="radio-label">
+          <input
+            className="radio"
+            type="radio"
+            id={formData[i].question_id}
+            value="1"
+            checked={formData[i]["answer"] === 1}
+            onChange={(e) => onChange(e)}
+          />
+        </label>
+        <input
+          className="radio"
+          type="radio"
+          id={formData[i].question_id}
+          value="2"
+          checked={formData[i]["answer"] === 2}
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          className="radio"
+          type="radio"
+          id={formData[i].question_id}
+          value="3"
+          checked={formData[i]["answer"] === 3}
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          className="radio"
+          type="radio"
+          id={formData[i].question_id}
+          value="4"
+          checked={formData[i]["answer"] === 4}
+          onChange={(e) => onChange(e)}
+        />
+        <input
+          className="radio"
+          type="radio"
+          id={formData[i].question_id}
+          value="5"
+          checked={formData[i]["answer"] === 5}
+          onChange={(e) => onChange(e)}
+        />
+        <p>Agree</p>
+      </div>
     </div>
   );
 };

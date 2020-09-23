@@ -97,7 +97,7 @@ export const BirdsForm = (questionData: any) => {
     return <div></div>;
   } else {
     return (
-      <div>
+      <div className="form-container">
         <FormItem {...props} i={index} onChange={onChange} />
         <FormItem {...props} i={index + 1} onChange={onChange} />
         <FormItem {...props} i={index + 2} onChange={onChange} />
