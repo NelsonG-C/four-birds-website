@@ -5,7 +5,13 @@ import { BirdsForm } from "../components/BirdsForm";
 export const TestPage = () => {
   return (
     <Fragment>
-      <h2>Four Birds Test</h2>
+      <div className="test-heading">
+        <h2>Four Birds Test</h2>
+        <p>
+          Answer each question below, choosing from Strongly Disagree to
+          Strongly Agree
+        </p>
+      </div>
       <BirdsForm />
     </Fragment>
   );
