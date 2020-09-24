@@ -8,7 +8,7 @@ export const ResultsPage = () => {
 
   const resultData = async () => {
     try {
-      const response = await fetch("/result", {
+      const response = await fetch("/resultData", {
         method: "GET",
       });
       console.log(response.body);

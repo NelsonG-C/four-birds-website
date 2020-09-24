@@ -1,0 +1,16 @@
+INSERT INTO questions VALUES (1, 'I hesitate to criticize other people''s ideas.', 'S');
+INSERT INTO questions VALUES (2, 'I enjoy being part of a loud crowd', 'I');
+INSERT INTO questions VALUES (3, 'I put people under pressure.', 'D');
+INSERT INTO questions VALUES (4, 'I am emotionally reserved.', 'C');
+INSERT INTO questions VALUES (5, 'I have a strong need for power.', 'D');
+INSERT INTO questions VALUES (6, 'I want strangers to love me.', 'I');
+INSERT INTO questions VALUES (7, 'I value cooperation over competition.', 'S');
+INSERT INTO questions VALUES (8, 'I love order and regularity.', 'C');
+INSERT INTO questions VALUES (9, 'I love large parties.', 'I');
+INSERT INTO questions VALUES (10, 'I hate to seem pushy.', 'S');
+INSERT INTO questions VALUES (11, 'I am always guarded.', 'C');
+INSERT INTO questions VALUES (12, 'I try to outdo others.', 'D');
+INSERT INTO questions VALUES (13, 'I call people out when they tell fake or exaggerated stories.', 'D');
+INSERT INTO questions VALUES (14, 'I joke around a lot.', 'I');
+INSERT INTO questions VALUES (15, 'My first reaction to an idea is to see its flaws.', 'C');
+INSERT INTO questions VALUES (16, 'I make lots of noise.', 'S');
