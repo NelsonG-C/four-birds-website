@@ -19,7 +19,7 @@ export const BirdsForm = (questionData: any) => {
 
   const QuestionData = async () => {
     try {
-      const response = await fetch("/test", {
+      const response = await fetch("/testData", {
         method: "GET",
       });
       const data = await response.json();
@@ -72,7 +72,7 @@ export const BirdsForm = (questionData: any) => {
       console.log(body);
       const jsons = JSON.stringify(body);
       console.log(jsons);
-      const response = await fetch("/test", {
+      const response = await fetch("/testData", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

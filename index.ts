@@ -40,7 +40,7 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 //Submit Test
-app.post("/test", async (req, res) => {
+app.post("/testData", async (req, res) => {
   // need to handle multiple answer inserts
   console.log("Here now");
   try {
@@ -76,7 +76,7 @@ app.post("/test", async (req, res) => {
 });
 
 // Get questions from database
-app.get("/test", async (req, res) => {
+app.get("/testData", async (req, res) => {
   console.log(req.app);
   try {
     const questions = await db.any("SELECT * FROM questions");
@@ -87,7 +87,7 @@ app.get("/test", async (req, res) => {
 });
 
 //get test result for results page
-app.get("/result", async (req, res) => {
+app.get("/resultData", async (req, res) => {
   console.log("Hello in results");
   const result = await db.one("SELECT * FROM users WHERE user_id=($1)", [
     req.app.settings.user_id,
