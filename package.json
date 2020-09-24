@@ -9,9 +9,8 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "tsc",
-    "start": "node index.ts",
-    "heroku-postbuild": "cd client && yarn && yarn build"
+    "start": "node ./build/index.js",
+    "heroku-postbuild": "tsc & cd client && yarn && yarn build"
   },
   "dependencies": {
     "@types/pg-promise": "^5.4.3",
