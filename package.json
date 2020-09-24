@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "node index.js",
+    "start": "ts-node index.ts",
     "heroku-postbuild": "tsc & cd client && yarn && yarn build"
   },
   "dependencies": {
