@@ -108,7 +108,7 @@ export const BirdsPage = () => {
                 often passive and more likely to avoid confrontation like Owls.
               </p>
               <p>
-                Some words commonly associated with Owls are: <br />
+                Some words commonly associated with Doves are: <br />
                 Honest, Reliable, Dependent, Follower, Giving, Patient
               </p>
             </Col>
