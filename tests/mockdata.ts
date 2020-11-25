@@ -14,5 +14,5 @@ export const mockData = [
   { question_id: 13, q_type: "D", answer: 1 },
   { question_id: 14, q_type: "I", answer: 5 },
   { question_id: 15, q_type: "C", answer: 5 },
-  { question_id: 16, q_type: "S", answer: 3 },
+  { question_id: 16, q_type: "S", answer: 4 },
 ];
