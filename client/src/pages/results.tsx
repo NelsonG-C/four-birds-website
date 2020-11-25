@@ -1,17 +1,22 @@
 import React, { Fragment, useEffect, useState } from "react";
-
-import { Row, Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Birds from "../layout/birddata";
 
+interface TestResult {
+  password?: string;
+  username?: string;
+  user_id: string;
+  top_result: string;
+}
+
 export const ResultsPage = () => {
-  const [results, setResult] = useState<any>([]);
+  const [results, setResult] = useState<TestResult | null>(null);
 
   const resultData = async () => {
     try {
       const response = await fetch("/resultData", {
         method: "GET",
       });
-      console.log(response.body);
       const data = await response.json();
       console.log(data);
       setResult(data);
@@ -21,19 +26,16 @@ export const ResultsPage = () => {
   };
 
   useEffect(() => {
-    console.log("Now using effect");
     resultData();
   }, []);
 
-  console.log("Results", results);
-
-  if (results.length == 0) {
-    console.log("In here");
-    return <div>Meow</div>;
+  if (results == null) {
+    return <div></div>;
   } else {
-    const letter: any = results.top_result;
+    console.log(results);
+    const letter = results.top_result;
     console.log(letter);
-    const bird: any = Birds[0][letter];
+    const bird = Birds[0][letter];
     console.log(bird);
     return (
       <Fragment>
@@ -45,11 +47,9 @@ export const ResultsPage = () => {
           <h3 className="results">{bird.name}</h3>
         </Row>
         <Row className="results">
-          <img src={bird.image} alt="" />
+          <img src={bird.image} alt="Bird Image" />
         </Row>
       </Fragment>
     );
   }
 };
-
-//could add in details about the bird here at a later date
